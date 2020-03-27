@@ -1,0 +1,6 @@
+certbot
+
+**/node_modules/
+/junk-drawer/
+/.pulumi-home
+target

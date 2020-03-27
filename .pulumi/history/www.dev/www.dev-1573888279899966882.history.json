@@ -1,0 +1,24 @@
+{
+    "kind": "update",
+    "startTime": 1573888201,
+    "message": "wip",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "d827208a5b9455561e7ba8b22ce0d380a8faba11",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1573888279,
+    "resourceChanges": {
+        "create": 1,
+        "delete": 1,
+        "same": 8
+    }
+}

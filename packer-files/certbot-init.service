@@ -1,0 +1,10 @@
+[Unit]
+Description=Certbot initial launch
+Before=nginx.service
+
+[Service]
+Type=oneshot
+ExecStart=/root/certbot-init.sh
+
+[Install]
+RequiredBy=nginx.service

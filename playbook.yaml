@@ -1,0 +1,105 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: dist-upgrade
+      apt: 
+        upgrade: dist
+        update_cache: true
+    # for reasons I don't understand, an update->upgrade->update cycle is needed
+    # before some packages (ag, awscli) become visible
+    - name: bonus second update
+      apt:
+        update_cache: true
+    - name: distro packages
+      apt:
+        name:
+          # dev/admin tools
+          - vim
+          - silversearcher-ag
+          # misc prod stuff
+          - nginx 
+          - nginx-extras
+          - awscli
+          - lua-cjson
+          - lua-http
+          - jq
+          # certbot prereqs
+          - software-properties-common
+
+    # https://github.com/ansible/ansible/issues/48714
+    #- name: universe repo # for certbot deps
+    #  apt_repository:
+    #    repo: universe
+    - shell: |
+        add-apt-repository universe
+
+    - name: certbot repo
+      apt_repository:
+        repo: ppa:certbot/certbot
+    - name: certbot packages
+      apt:
+        name:
+          - certbot
+          - python-certbot-nginx
+
+    - snap:
+        name: amazon-ssm-agent
+        state: absent
+    - name: remove-snapd/aux # purge fails otherwise
+      file:
+        name: /var/cache/snapd/aux
+        state: absent
+
+    - name: remove unused packages
+      apt:
+        state: absent
+        purge: yes
+        name: ["apport", "apport-symptoms", "byobu", "command-not-found",
+        "command-not-found-data", "cryptsetup", "cryptsetup-bin", "dosfstools",
+        "eject", "nano", "parted", "snapd", "telnet"]
+        autoremove: yes
+
+    - copy:
+        src: packer-files/certbot-init.sh
+        dest: /root/certbot-init.sh
+        mode: 'u=rx'
+
+    - copy:
+        src: packer-files/certbot-init.service
+        dest: /etc/systemd/system/certbot-init.service
+        mode: 'u=r'
+
+    - systemd:
+        name: certbot-init
+        enabled: yes
+
+    - copy:
+        src: packer-files/download-config.service
+        dest: /etc/systemd/system/download-config.service
+        mode: 'u=r'
+
+    - systemd:
+        name: download-config
+        enabled: yes
+
+    - shell: |
+        GLOBIGNORE='*-mod-http-lua.conf:*-mod-http-ndk.conf'
+        cd /etc/nginx/modules-enabled && rm *
+        
+    - file:
+        name: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - copy:
+        src: packer-files/dhparams
+        dest: /etc/nginx/dhparams
+
+    - copy:
+        src: packer-files/www
+        dest: /etc/nginx/sites-available/www
+
+    - file:
+        name: /etc/nginx/sites-enabled/www
+        state: link
+        src: /etc/nginx/sites-available/www
+

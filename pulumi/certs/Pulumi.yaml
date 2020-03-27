@@ -1,0 +1,3 @@
+name: certs
+runtime: nodejs
+description: Lambda to get Lets Encrypt certificates

@@ -1,0 +1,23 @@
+{
+    "kind": "update",
+    "startTime": 1572393181,
+    "message": "wip add pulumi",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "3dc4ca6a2880ecb2fe47776f91b36a0e852c6f40",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1572393186,
+    "resourceChanges": {
+        "create": 1,
+        "same": 7
+    }
+}

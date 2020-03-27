@@ -1,0 +1,79 @@
+{
+    "version": 3,
+    "checkpoint": {
+        "stack": "prod",
+        "latest": {
+            "manifest": {
+                "time": "2019-10-29T13:29:41.273296392-07:00",
+                "magic": "63556338d86370db835249c95d7be82a6faf40b39cbf43cb94ed25936834dae6",
+                "version": "v1.4.0"
+            },
+            "secrets_providers": {
+                "type": "passphrase",
+                "state": {
+                    "salt": "v1:qD3wffZgM5k=:v1:ON+kkYJT0XAQ/MPU:Usy8qaNiFotpl3xLiOL3HYcU7RvBLQ=="
+                }
+            },
+            "resources": [
+                {
+                    "urn": "urn:pulumi:prod::www::pulumi:pulumi:Stack::www-prod",
+                    "custom": false,
+                    "type": "pulumi:pulumi:Stack"
+                },
+                {
+                    "urn": "urn:pulumi:prod::www::pulumi:providers:aws::default_1_7_0",
+                    "custom": true,
+                    "id": "522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "type": "pulumi:providers:aws",
+                    "inputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    },
+                    "outputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:prod::www::aws:iam/role:Role::www",
+                    "custom": true,
+                    "id": "www-a89e75d",
+                    "type": "aws:iam/role:Role",
+                    "inputs": {
+                        "__defaults": [
+                            "forceDetachPolicies",
+                            "maxSessionDuration",
+                            "name",
+                            "path"
+                        ],
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "description": "Has read access to S3 Bucket rlk-general-private",
+                        "forceDetachPolicies": false,
+                        "maxSessionDuration": 3600,
+                        "name": "www-a89e75d",
+                        "path": "/"
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:iam::901680779521:role/www-a89e75d",
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "createDate": "2019-10-29T20:29:40Z",
+                        "description": "Has read access to S3 Bucket rlk-general-private",
+                        "forceDetachPolicies": false,
+                        "id": "www-a89e75d",
+                        "maxSessionDuration": 3600,
+                        "name": "www-a89e75d",
+                        "path": "/",
+                        "tags": {},
+                        "uniqueId": "AROA5D4C42EAR6762D2J4"
+                    },
+                    "parent": "urn:pulumi:prod::www::pulumi:pulumi:Stack::www-prod",
+                    "provider": "urn:pulumi:prod::www::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "assumeRolePolicy": null,
+                        "description": null
+                    }
+                }
+            ]
+        }
+    }
+}

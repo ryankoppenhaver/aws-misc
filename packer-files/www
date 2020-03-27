@@ -1,0 +1,89 @@
+lua_shared_dict s3_info 8k;
+
+init_by_lua_block {
+  local s3_info = ngx.shared.s3_info;
+  local json = io.open("/etc/config.json"):read("*a")
+  local config = cjson.decode(json)
+
+
+  s3_info:set("bucket", "TKTK")
+  s3_info:set("keyId", "TKTK")
+  s3_info:set("TKTK","TKTK")
+}
+
+
+server {
+  listen 80 default_server;
+  #listen [::]:80 default_server;
+
+  return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl default_server;
+  #listen [::]:443 ssl default_server;
+
+  ssl_certificate /etc/letsencrypt/live/bitflip.space/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/bitflip.space/privkey.pem;
+
+  # taken from
+  # https://ssl-config.mozilla.org/#server=nginx&server-version=1.14.0&config=intermediate&openssl-version=1.1.1
+  # as of 2019-10-30
+  ssl_session_timeout 1d;
+  ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+  ssl_session_tickets off;
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+  ssl_prefer_server_ciphers off;
+  ssl_dhparam /etc/nginx/dhparams;
+
+  add_header Strict-Transport-Security "max-age=63072000" always;
+
+  #TODO add OCSP stapling
+
+  # end mozilla config
+
+  # temporary
+  root /var/www/html;
+  index index.nginx-debian.html;
+  location /test {
+    default_type 'text/plain';
+    content_by_lua_block {
+      ngx.say('hello world')
+    }
+  }
+  location /p/ {
+    #TODO - drop non-GET (will fail sig)
+
+    #TODO figure out how to not hardcode this
+    #proxy_pass https://www-data-57e41ee.s3.us-west-2.amazonaws.com/;
+    proxy_pass http://localhost:9999/;
+
+    set $upstream_date '';
+    set $auth_str '';
+    set_by_lua_block $auth_str {
+      local key = "TKTK";
+
+      ngx.var.upstream_date = os.date("!%a, %d %b %Y %H:%M:%S GMT ", os.time());
+
+      local string_to_sign = ( 
+        "GET\n" 
+        .. "\n\n" -- no Content-MD5 or Content-Type
+        .. ngx.var.upstream_date .. "\n"
+        .. "" -- no amz headers
+        .. ngx.var.request_uri
+      )
+      -- b64( hmac-sha1( key, string_to_sign ) )
+      local sig = ngx.encode_base64(ngx.hmac_sha1(key, string_to_sign));
+
+      return "Authorization: AWS TKTK:" .. sig  ;-- .. " DEBUG: " .. string_to_sign;
+    }
+    proxy_set_header Date $upstream_date;
+    proxy_set_header Authorization $auth_str;
+  }
+
+  location / {
+    try_files $uri $uri/ =404;
+  }
+  
+}

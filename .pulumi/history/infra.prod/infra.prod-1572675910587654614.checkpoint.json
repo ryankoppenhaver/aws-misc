@@ -1,0 +1,26 @@
+{
+    "version": 3,
+    "checkpoint": {
+        "stack": "prod",
+        "latest": {
+            "manifest": {
+                "time": "2019-11-01T23:25:10.575417336-07:00",
+                "magic": "63556338d86370db835249c95d7be82a6faf40b39cbf43cb94ed25936834dae6",
+                "version": "v1.4.0"
+            },
+            "secrets_providers": {
+                "type": "passphrase",
+                "state": {
+                    "salt": "v1:1TgJ7b3rCwM=:v1:9LvSfLIrrJk2aFnS:M+gW8N3FUCYe5jzxHXXgUqKTNI7dAg=="
+                }
+            },
+            "resources": [
+                {
+                    "urn": "urn:pulumi:prod::infra::pulumi:pulumi:Stack::infra-prod",
+                    "custom": false,
+                    "type": "pulumi:pulumi:Stack"
+                }
+            ]
+        }
+    }
+}

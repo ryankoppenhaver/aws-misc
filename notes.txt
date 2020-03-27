@@ -1,0 +1,34 @@
+local tools:
+ terraform
+ packer
+ jq
+ certbot (to generate registration)
+
+create certbot/{config,work,logs}
+certbot register -m 'ryan.koppenhaver@gmail.com' --no-eff-email
+
+> Your account credentials have been saved in your Certbot
+>   configuration directory at /home/rlk/src/www-v2/certbot/config
+
+aws s3 cp --recursive certbot/config/ s3://rlk-general-private/certbot-config
+
+packer new server.packer.json
+cd terraform; terraform apply
+
+===
+10/2019
+
+manually set soa of default-created NS records for bitflip.space in route53 to 1800
+manually configured gandi to use route53 name servers
+
+TODO figure out if setup with `certbot certonly --nginx ...` will (a) install the renewal cronjob, and (b) restart nginx on renewal
+
+pulumi migration
+ - create new project/stack, including pulumi up, if applicable
+ - pulumi export old/new stacks; copy individual resources:
+    rename urn, edit parent/provider
+
+stackreference("ZZZ") => .pulumi/stacks/ZZZ.json / failed to load checkpoint
+  /home/rlk/src/www-v2/pulumi/www/.pulumi/stacks/ZZZ.json: no such file or directory
+
+TODO: still setting aws region manually

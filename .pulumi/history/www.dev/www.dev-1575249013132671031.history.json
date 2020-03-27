@@ -1,0 +1,24 @@
+{
+    "kind": "update",
+    "startTime": 1575248934,
+    "message": "add instance cert access policy",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "eaad1fcd965b9801084d71b7c02fd587d64fe187",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1575249013,
+    "resourceChanges": {
+        "replace": 1,
+        "same": 8,
+        "update": 1
+    }
+}

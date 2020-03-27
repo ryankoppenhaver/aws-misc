@@ -1,0 +1,12 @@
+[Unit]
+Description=Retrieve Config from EC2 User Data
+Requires=network.target
+After=network.target
+Before=nginx.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl http://169.254.169.254/latest/user-data -o /etc/config.json
+
+[Install]
+RequiredBy=nginx.service

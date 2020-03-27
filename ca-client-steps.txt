@@ -1,0 +1,21 @@
+
+region=$(
+  curl http://169.254.169.254/latest/meta-data/placement/availability-zone \
+  | sed -Ee 's/.$//'
+)
+
+lambda_arn=$(curl http://169.254.169.254/latest/user-data | jq -r .caLambdaARN)
+
+my_arn=$(aws sts get-caller-identity | jq -r .Arn)
+
+pubkey=$(< /etc/ssh/ssh_host_ed25519_key.pub)
+
+payload=$(jq -n --arg a "$my_arn" --arg pk "$pubkey" '{Arn: $a, PublicKey: $pk}')
+
+aws --region "$region" \
+  lambda invoke \
+    --function-name "$lambda_arn" \
+    --payload "$payload" \
+    /dev/stderr \
+  2>&1 >/dev/null
+| jq -r 

@@ -1,0 +1,23 @@
+{
+    "kind": "update",
+    "startTime": 1575243114,
+    "message": "fix zip upload",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "e8adae445862da1993d091e2563d1659a2faef09",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1575243118,
+    "resourceChanges": {
+        "same": 5,
+        "update": 1
+    }
+}

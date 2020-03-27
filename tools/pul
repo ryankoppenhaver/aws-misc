@@ -1,0 +1,18 @@
+#!/bin/bash
+set -eu
+#set -x
+
+#TODO: find closest .pulumi instead
+project_root="$(git rev-parse --show-toplevel)"
+
+export PULUMI_HOME="$project_root/.pulumi-home"
+export PULUMI_CONFIG_PASSPHRASE=""
+
+if [ "$*" = "init" ]; then
+  pulumi login "file://$project_root"
+  if ! grep -q .pulumi-home "$project_root/.gitignore" 2>&1; then
+    echo "/.pulumi-home" >> "$project_root/.gitignore"
+  fi
+else
+  pulumi "$@"
+fi

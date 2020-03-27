@@ -1,0 +1,25 @@
+{
+    "kind": "update",
+    "startTime": 1579059841,
+    "message": "create certs.dev",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "66a16ccdc26284ea7c2b87dde17d0714f9c0265e",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1579059860,
+    "resourceChanges": {
+        "create": 4,
+        "delete": 4,
+        "same": 3,
+        "update": 1
+    }
+}

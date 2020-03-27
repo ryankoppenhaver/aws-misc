@@ -1,0 +1,433 @@
+{
+    "version": 3,
+    "checkpoint": {
+        "stack": "www.dev",
+        "latest": {
+            "manifest": {
+                "time": "2019-11-15T23:04:35.851428622-08:00",
+                "magic": "1d5f3b62e78892f89b30a2cc29a7eee340fe39a0f777515c72079024e9b448a6",
+                "version": "v1.5.2"
+            },
+            "secrets_providers": {
+                "type": "passphrase",
+                "state": {
+                    "salt": "v1:A33vPpktUlY=:v1:Xpc1/uZV9KiIOzfT:jgtBA1UicSaVvY0Y1mkYKDUR0zoTVg=="
+                }
+            },
+            "resources": [
+                {
+                    "urn": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "custom": false,
+                    "type": "pulumi:pulumi:Stack",
+                    "outputs": {
+                        "bucketName": "www-data-8144abf",
+                        "publicIp": "44.227.30.207"
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::pulumi:providers:pulumi::default",
+                    "custom": true,
+                    "id": "bad61a66-d47f-4cff-9f38-4da72c317744",
+                    "type": "pulumi:providers:pulumi"
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::pulumi:pulumi:StackReference::infra.prod",
+                    "custom": true,
+                    "id": "infra.prod",
+                    "type": "pulumi:pulumi:StackReference",
+                    "inputs": {
+                        "name": "infra.prod"
+                    },
+                    "outputs": {
+                        "name": "infra.prod",
+                        "outputs": {
+                            "zone": {
+                                "comment": "Managed by Pulumi",
+                                "delegationSetId": "",
+                                "forceDestroy": false,
+                                "id": "Z2ANF874KJ45PB",
+                                "name": "bitflip.space.",
+                                "nameServers": [
+                                    "ns-1251.awsdns-28.org",
+                                    "ns-1570.awsdns-04.co.uk",
+                                    "ns-484.awsdns-60.com",
+                                    "ns-898.awsdns-48.net"
+                                ],
+                                "tags": {},
+                                "urn": "urn:pulumi:infra.prod::infra::aws:route53/zone:Zone::bitflip.space",
+                                "vpcs": [],
+                                "zoneId": "Z2ANF874KJ45PB"
+                            }
+                        },
+                        "secretOutputNames": []
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "external": true,
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:pulumi::default::bad61a66-d47f-4cff-9f38-4da72c317744"
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0",
+                    "custom": true,
+                    "id": "0b214896-114a-4710-a002-b783b8b34f26",
+                    "type": "pulumi:providers:aws",
+                    "inputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    },
+                    "outputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:iam/role:Role::www",
+                    "custom": true,
+                    "id": "www-590c8f5",
+                    "type": "aws:iam/role:Role",
+                    "inputs": {
+                        "__defaults": [
+                            "forceDetachPolicies",
+                            "maxSessionDuration",
+                            "name",
+                            "path"
+                        ],
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "description": "Has read access to some S3 Buckets",
+                        "forceDetachPolicies": false,
+                        "maxSessionDuration": 3600,
+                        "name": "www-590c8f5",
+                        "path": "/"
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:iam::901680779521:role/www-590c8f5",
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "createDate": "2019-11-16T07:03:13Z",
+                        "description": "Has read access to some S3 Buckets",
+                        "forceDetachPolicies": false,
+                        "id": "www-590c8f5",
+                        "maxSessionDuration": 3600,
+                        "name": "www-590c8f5",
+                        "path": "/",
+                        "tags": {},
+                        "uniqueId": "AROA5D4C42EA6W4CAL3XB"
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "assumeRolePolicy": null,
+                        "description": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:iam/rolePolicy:RolePolicy::www-read-rlk-general-private",
+                    "custom": true,
+                    "id": "www-590c8f5:www-read-rlk-general-private-f74c7a3",
+                    "type": "aws:iam/rolePolicy:RolePolicy",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "name": "www-read-rlk-general-private-f74c7a3",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListBucket\"],\"Resource\":[\"arn:aws:s3:::rlk-general-private\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::rlk-general-private/*\"]}]}",
+                        "role": "www-590c8f5"
+                    },
+                    "outputs": {
+                        "id": "www-590c8f5:www-read-rlk-general-private-f74c7a3",
+                        "name": "www-read-rlk-general-private-f74c7a3",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListBucket\"],\"Resource\":[\"arn:aws:s3:::rlk-general-private\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::rlk-general-private/*\"]}]}",
+                        "role": "www-590c8f5"
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "dependencies": [
+                        "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                    ],
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "policy": null,
+                        "role": [
+                            "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:iam/instanceProfile:InstanceProfile::www",
+                    "custom": true,
+                    "id": "www-d93a79a",
+                    "type": "aws:iam/instanceProfile:InstanceProfile",
+                    "inputs": {
+                        "__defaults": [
+                            "name",
+                            "path"
+                        ],
+                        "name": "www-d93a79a",
+                        "path": "/",
+                        "role": "www-590c8f5"
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:iam::901680779521:instance-profile/www-d93a79a",
+                        "createDate": "2019-11-16T07:03:14Z",
+                        "id": "www-d93a79a",
+                        "name": "www-d93a79a",
+                        "path": "/",
+                        "role": "www-590c8f5",
+                        "roles": [],
+                        "uniqueId": "AIPA5D4C42EA6Q2Y3RZW3"
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "dependencies": [
+                        "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                    ],
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "role": [
+                            "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:s3/bucket:Bucket::www-data",
+                    "custom": true,
+                    "id": "www-data-8144abf",
+                    "type": "aws:s3/bucket:Bucket",
+                    "inputs": {
+                        "__defaults": [
+                            "bucket",
+                            "forceDestroy"
+                        ],
+                        "acl": "private",
+                        "bucket": "www-data-8144abf",
+                        "forceDestroy": false
+                    },
+                    "outputs": {
+                        "accelerationStatus": "",
+                        "acl": "private",
+                        "arn": "arn:aws:s3:::www-data-8144abf",
+                        "bucket": "www-data-8144abf",
+                        "bucketDomainName": "www-data-8144abf.s3.amazonaws.com",
+                        "bucketRegionalDomainName": "www-data-8144abf.s3.us-west-2.amazonaws.com",
+                        "corsRules": [],
+                        "forceDestroy": false,
+                        "hostedZoneId": "Z3BJ6K6RIION7M",
+                        "id": "www-data-8144abf",
+                        "lifecycleRules": [],
+                        "loggings": [],
+                        "region": "us-west-2",
+                        "requestPayer": "BucketOwner",
+                        "tags": {},
+                        "versioning": {
+                            "enabled": false,
+                            "mfaDelete": false
+                        }
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "acl": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:iam/rolePolicy:RolePolicy::www-read-www-data",
+                    "custom": true,
+                    "id": "www-590c8f5:www-read-www-data-7a5b97b",
+                    "type": "aws:iam/rolePolicy:RolePolicy",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "name": "www-read-www-data-7a5b97b",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListBucket\"],\"Resource\":[\"arn:aws:s3:::www-data-8144abf\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::www-data-8144abf/*\"]}]}",
+                        "role": "www-590c8f5"
+                    },
+                    "outputs": {
+                        "id": "www-590c8f5:www-read-www-data-7a5b97b",
+                        "name": "www-read-www-data-7a5b97b",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListBucket\"],\"Resource\":[\"arn:aws:s3:::www-data-8144abf\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::www-data-8144abf/*\"]}]}",
+                        "role": "www-590c8f5"
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "dependencies": [
+                        "urn:pulumi:www.dev::www::aws:s3/bucket:Bucket::www-data",
+                        "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                    ],
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "policy": [
+                            "urn:pulumi:www.dev::www::aws:s3/bucket:Bucket::www-data"
+                        ],
+                        "role": [
+                            "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:ec2/instance:Instance::www",
+                    "custom": true,
+                    "id": "i-0cb64a3aa6936be99",
+                    "type": "aws:ec2/instance:Instance",
+                    "inputs": {
+                        "__defaults": [
+                            "getPasswordData",
+                            "sourceDestCheck"
+                        ],
+                        "ami": "ami-06af09111d6e02f5d",
+                        "getPasswordData": false,
+                        "iamInstanceProfile": "www-d93a79a",
+                        "instanceType": "t2.micro",
+                        "keyName": "rlk@descartes-20180930",
+                        "sourceDestCheck": true,
+                        "userData": "{\"wwwDataBucket\":\"www-data-8144abf\",\"wwwDataRole\":\"www-590c8f5\"}"
+                    },
+                    "outputs": {
+                        "__meta": "{\"schema_version\":\"1\"}",
+                        "ami": "ami-06af09111d6e02f5d",
+                        "arn": "arn:aws:ec2:us-west-2:901680779521:instance/i-0cb64a3aa6936be99",
+                        "associatePublicIpAddress": true,
+                        "availabilityZone": "us-west-2a",
+                        "cpuCoreCount": 1,
+                        "cpuThreadsPerCore": 1,
+                        "creditSpecification": {
+                            "cpuCredits": "standard"
+                        },
+                        "disableApiTermination": false,
+                        "ebsBlockDevices": [],
+                        "ebsOptimized": false,
+                        "ephemeralBlockDevices": [],
+                        "getPasswordData": false,
+                        "iamInstanceProfile": "www-d93a79a",
+                        "id": "i-0cb64a3aa6936be99",
+                        "instanceState": "running",
+                        "instanceType": "t2.micro",
+                        "ipv6AddressCount": 0,
+                        "ipv6Addresses": [],
+                        "keyName": "rlk@descartes-20180930",
+                        "monitoring": false,
+                        "networkInterfaces": [],
+                        "passwordData": "",
+                        "placementGroup": "",
+                        "primaryNetworkInterfaceId": "eni-069cb039c84ea42d0",
+                        "privateDns": "ip-172-31-25-0.us-west-2.compute.internal",
+                        "privateIp": "172.31.25.0",
+                        "publicDns": "ec2-34-219-142-114.us-west-2.compute.amazonaws.com",
+                        "publicIp": "34.219.142.114",
+                        "rootBlockDevice": {
+                            "deleteOnTermination": true,
+                            "encrypted": false,
+                            "iops": 100,
+                            "kmsKeyId": "",
+                            "volumeId": "vol-065f5e2ffe5e84e88",
+                            "volumeSize": 8,
+                            "volumeType": "gp2"
+                        },
+                        "securityGroups": [
+                            "default"
+                        ],
+                        "sourceDestCheck": true,
+                        "subnetId": "subnet-b896ebde",
+                        "tags": {},
+                        "tenancy": "default",
+                        "userData": "21913e2aaa4ccc09198d3dfbd85d0836f26480fe",
+                        "volumeTags": {},
+                        "vpcSecurityGroupIds": [
+                            "sg-231b3f5e"
+                        ]
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "dependencies": [
+                        "urn:pulumi:www.dev::www::aws:iam/instanceProfile:InstanceProfile::www",
+                        "urn:pulumi:www.dev::www::aws:s3/bucket:Bucket::www-data",
+                        "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                    ],
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "ami": null,
+                        "iamInstanceProfile": [
+                            "urn:pulumi:www.dev::www::aws:iam/instanceProfile:InstanceProfile::www"
+                        ],
+                        "instanceType": null,
+                        "keyName": null,
+                        "userData": [
+                            "urn:pulumi:www.dev::www::aws:s3/bucket:Bucket::www-data",
+                            "urn:pulumi:www.dev::www::aws:iam/role:Role::www"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:ec2/eip:Eip::www",
+                    "custom": true,
+                    "id": "eipalloc-098036661e9e8852d",
+                    "type": "aws:ec2/eip:Eip",
+                    "inputs": {
+                        "__defaults": [],
+                        "instance": "i-0cb64a3aa6936be99"
+                    },
+                    "outputs": {
+                        "associationId": "eipassoc-061d49b1893543352",
+                        "domain": "vpc",
+                        "id": "eipalloc-098036661e9e8852d",
+                        "instance": "i-0cb64a3aa6936be99",
+                        "networkInterface": "eni-069cb039c84ea42d0",
+                        "privateDns": "ip-172-31-25-0.us-west-2.compute.internal",
+                        "privateIp": "172.31.25.0",
+                        "publicDns": "ec2-44-227-30-207.us-west-2.compute.amazonaws.com",
+                        "publicIp": "44.227.30.207",
+                        "publicIpv4Pool": "amazon",
+                        "tags": {},
+                        "vpc": true
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "dependencies": [
+                        "urn:pulumi:www.dev::www::aws:ec2/instance:Instance::www"
+                    ],
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "instance": [
+                            "urn:pulumi:www.dev::www::aws:ec2/instance:Instance::www"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:www.dev::www::aws:route53/record:Record::stackEnv.bitflip.space.",
+                    "custom": true,
+                    "id": "Z2ANF874KJ45PB_stackenv.bitflip.space._A",
+                    "type": "aws:route53/record:Record",
+                    "inputs": {
+                        "__defaults": [],
+                        "name": "stackEnv.bitflip.space.",
+                        "records": [
+                            "44.227.30.207"
+                        ],
+                        "ttl": 1800,
+                        "type": "A",
+                        "zoneId": "Z2ANF874KJ45PB"
+                    },
+                    "outputs": {
+                        "__meta": "{\"schema_version\":\"2\"}",
+                        "fqdn": "stackenv.bitflip.space",
+                        "id": "Z2ANF874KJ45PB_stackenv.bitflip.space._A",
+                        "name": "stackenv.bitflip.space",
+                        "records": [
+                            "44.227.30.207"
+                        ],
+                        "ttl": 1800,
+                        "type": "A",
+                        "zoneId": "Z2ANF874KJ45PB"
+                    },
+                    "parent": "urn:pulumi:www.dev::www::pulumi:pulumi:Stack::www-www.dev",
+                    "dependencies": [
+                        "urn:pulumi:www.dev::www::aws:ec2/eip:Eip::www"
+                    ],
+                    "provider": "urn:pulumi:www.dev::www::pulumi:providers:aws::default_1_7_0::0b214896-114a-4710-a002-b783b8b34f26",
+                    "propertyDependencies": {
+                        "name": null,
+                        "records": [
+                            "urn:pulumi:www.dev::www::aws:ec2/eip:Eip::www"
+                        ],
+                        "ttl": null,
+                        "type": null,
+                        "zoneId": null
+                    }
+                }
+            ]
+        }
+    }
+}

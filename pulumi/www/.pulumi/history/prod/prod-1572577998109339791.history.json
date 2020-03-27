@@ -1,0 +1,24 @@
+{
+    "kind": "update",
+    "startTime": 1572577930,
+    "message": "work on adding proxying/sigs to nginx, do ssl config manually",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "52792703599c3330ffa8214afdb2ada17f27ae3e",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1572577998,
+    "resourceChanges": {
+        "replace": 1,
+        "same": 9,
+        "update": 1
+    }
+}

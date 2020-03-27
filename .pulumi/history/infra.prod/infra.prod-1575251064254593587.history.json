@@ -1,0 +1,23 @@
+{
+    "kind": "update",
+    "startTime": 1575251059,
+    "message": "delete old constants, wip to add policy to allow lambda invocation",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "false",
+        "git.head": "041651c088283777cc844607d634735a5fda1679",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1575251064,
+    "resourceChanges": {
+        "same": 7,
+        "update": 1
+    }
+}

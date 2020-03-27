@@ -1,0 +1,23 @@
+{
+    "kind": "update",
+    "startTime": 1574309435,
+    "message": "add pulumi wrapper script (symlinked into ~/bin)",
+    "environment": {
+        "git.author": "Ryan Koppenhaver",
+        "git.author.email": "ryan.koppenhaver@gmail.com",
+        "git.committer": "Ryan Koppenhaver",
+        "git.committer.email": "ryan.koppenhaver@gmail.com",
+        "git.dirty": "true",
+        "git.head": "e811497e00b98295aa941642a639ee513779a1c7",
+        "git.headName": "refs/heads/master"
+    },
+    "config": {
+        "aws:region": "us-west-2"
+    },
+    "result": "succeeded",
+    "endTime": 1574309438,
+    "resourceChanges": {
+        "same": 5,
+        "update": 1
+    }
+}

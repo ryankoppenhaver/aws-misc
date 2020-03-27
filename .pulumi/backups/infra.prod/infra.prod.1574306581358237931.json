@@ -1,0 +1,192 @@
+{
+    "version": 3,
+    "checkpoint": {
+        "stack": "infra.prod",
+        "latest": {
+            "manifest": {
+                "time": "2019-11-20T19:23:01.337905831-08:00",
+                "magic": "1d5f3b62e78892f89b30a2cc29a7eee340fe39a0f777515c72079024e9b448a6",
+                "version": "v1.5.2"
+            },
+            "secrets_providers": {
+                "type": "passphrase",
+                "state": {
+                    "salt": "v1:1TgJ7b3rCwM=:v1:9LvSfLIrrJk2aFnS:M+gW8N3FUCYe5jzxHXXgUqKTNI7dAg=="
+                }
+            },
+            "resources": [
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "custom": false,
+                    "type": "pulumi:pulumi:Stack",
+                    "outputs": {
+                        "zone": {
+                            "comment": "Managed by Pulumi",
+                            "delegationSetId": "",
+                            "forceDestroy": false,
+                            "id": "Z2ANF874KJ45PB",
+                            "name": "bitflip.space.",
+                            "nameServers": [
+                                "ns-1251.awsdns-28.org",
+                                "ns-1570.awsdns-04.co.uk",
+                                "ns-484.awsdns-60.com",
+                                "ns-898.awsdns-48.net"
+                            ],
+                            "tags": {},
+                            "urn": "urn:pulumi:infra.prod::infra::aws:route53/zone:Zone::bitflip.space",
+                            "vpcs": [],
+                            "zoneId": "Z2ANF874KJ45PB"
+                        }
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0",
+                    "custom": true,
+                    "id": "522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "type": "pulumi:providers:aws",
+                    "inputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    },
+                    "outputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:route53/zone:Zone::bitflip.space",
+                    "custom": true,
+                    "id": "Z2ANF874KJ45PB",
+                    "type": "aws:route53/zone:Zone",
+                    "inputs": {
+                        "__defaults": [
+                            "forceDestroy"
+                        ],
+                        "comment": "Managed by Pulumi",
+                        "forceDestroy": false,
+                        "name": "bitflip.space"
+                    },
+                    "outputs": {
+                        "comment": "Managed by Pulumi",
+                        "delegationSetId": "",
+                        "forceDestroy": false,
+                        "id": "Z2ANF874KJ45PB",
+                        "name": "bitflip.space.",
+                        "nameServers": [
+                            "ns-1251.awsdns-28.org",
+                            "ns-1570.awsdns-04.co.uk",
+                            "ns-484.awsdns-60.com",
+                            "ns-898.awsdns-48.net"
+                        ],
+                        "tags": {},
+                        "vpcs": [],
+                        "zoneId": "Z2ANF874KJ45PB"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "comment": null,
+                        "name": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role",
+                    "custom": true,
+                    "id": "ca-role-b4ea774",
+                    "type": "aws:iam/role:Role",
+                    "inputs": {
+                        "__defaults": [
+                            "forceDetachPolicies",
+                            "maxSessionDuration",
+                            "name",
+                            "path"
+                        ],
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "description": "TKTK",
+                        "forceDetachPolicies": false,
+                        "maxSessionDuration": 3600,
+                        "name": "ca-role-b4ea774",
+                        "path": "/"
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:iam::901680779521:role/ca-role-b4ea774",
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "createDate": "2019-11-21T03:23:00Z",
+                        "description": "TKTK",
+                        "forceDetachPolicies": false,
+                        "id": "ca-role-b4ea774",
+                        "maxSessionDuration": 3600,
+                        "name": "ca-role-b4ea774",
+                        "path": "/",
+                        "tags": {},
+                        "uniqueId": "AROA5D4C42EA5JISNTVQM"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "assumeRolePolicy": null,
+                        "description": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/rolePolicyAttachment:RolePolicyAttachment::ca-rpa-lambdabasicexecution",
+                    "custom": true,
+                    "id": "ca-role-b4ea774-20191121032300982700000001",
+                    "type": "aws:iam/rolePolicyAttachment:RolePolicyAttachment",
+                    "inputs": {
+                        "__defaults": [],
+                        "policyArn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "outputs": {
+                        "id": "ca-role-b4ea774-20191121032300982700000001",
+                        "policyArn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "dependencies": [
+                        "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                    ],
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "policyArn": null,
+                        "role": [
+                            "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/rolePolicy:RolePolicy::ca-rolepolicy",
+                    "custom": true,
+                    "id": "ca-role-b4ea774:ca-rolepolicy-7eb2766",
+                    "type": "aws:iam/rolePolicy:RolePolicy",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "name": "ca-rolepolicy-7eb2766",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"iam:GetRole\"],\"Resource\":[\"*\"]}]}",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "outputs": {
+                        "id": "ca-role-b4ea774:ca-rolepolicy-7eb2766",
+                        "name": "ca-rolepolicy-7eb2766",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"iam:GetRole\"],\"Resource\":[\"*\"]}]}",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "dependencies": [
+                        "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                    ],
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "policy": null,
+                        "role": [
+                            "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

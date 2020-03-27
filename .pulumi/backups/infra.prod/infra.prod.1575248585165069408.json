@@ -1,0 +1,370 @@
+{
+    "version": 3,
+    "checkpoint": {
+        "stack": "infra.prod",
+        "latest": {
+            "manifest": {
+                "time": "2019-12-01T17:03:05.121405219-08:00",
+                "magic": "1be485475e3351f07e1a191bcbcfde3428a4d0e3294f7e251ecc064f0fd8a04b",
+                "version": "v1.6.1"
+            },
+            "secrets_providers": {
+                "type": "passphrase",
+                "state": {
+                    "salt": "v1:1TgJ7b3rCwM=:v1:9LvSfLIrrJk2aFnS:M+gW8N3FUCYe5jzxHXXgUqKTNI7dAg=="
+                }
+            },
+            "resources": [
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "custom": false,
+                    "type": "pulumi:pulumi:Stack",
+                    "outputs": {
+                        "caLambdaARN": "arn:aws:lambda:us-west-2:901680779521:function:caLambda-5145177",
+                        "instanceCertPolicyARN": "arn:aws:iam::901680779521:policy/instanceCertPolicy-46872c9",
+                        "zone": {
+                            "comment": "Managed by Pulumi",
+                            "delegationSetId": "",
+                            "forceDestroy": false,
+                            "id": "Z2ANF874KJ45PB",
+                            "name": "bitflip.space.",
+                            "nameServers": [
+                                "ns-1251.awsdns-28.org",
+                                "ns-1570.awsdns-04.co.uk",
+                                "ns-484.awsdns-60.com",
+                                "ns-898.awsdns-48.net"
+                            ],
+                            "tags": {},
+                            "urn": "urn:pulumi:infra.prod::infra::aws:route53/zone:Zone::bitflip.space",
+                            "vpcs": [],
+                            "zoneId": "Z2ANF874KJ45PB"
+                        }
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0",
+                    "custom": true,
+                    "id": "522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "type": "pulumi:providers:aws",
+                    "inputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    },
+                    "outputs": {
+                        "region": "us-west-2",
+                        "version": "1.7.0"
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority",
+                    "custom": true,
+                    "id": "certificate-authority-e005a1d",
+                    "type": "aws:s3/bucket:Bucket",
+                    "inputs": {
+                        "__defaults": [
+                            "bucket",
+                            "forceDestroy"
+                        ],
+                        "acl": "private",
+                        "bucket": "certificate-authority-e005a1d",
+                        "forceDestroy": false
+                    },
+                    "outputs": {
+                        "accelerationStatus": "",
+                        "acl": "private",
+                        "arn": "arn:aws:s3:::certificate-authority-e005a1d",
+                        "bucket": "certificate-authority-e005a1d",
+                        "bucketDomainName": "certificate-authority-e005a1d.s3.amazonaws.com",
+                        "bucketRegionalDomainName": "certificate-authority-e005a1d.s3.us-west-2.amazonaws.com",
+                        "corsRules": [],
+                        "forceDestroy": false,
+                        "hostedZoneId": "Z3BJ6K6RIION7M",
+                        "id": "certificate-authority-e005a1d",
+                        "lifecycleRules": [],
+                        "loggings": [],
+                        "objectLockConfiguration": null,
+                        "region": "us-west-2",
+                        "replicationConfiguration": null,
+                        "requestPayer": "BucketOwner",
+                        "serverSideEncryptionConfiguration": null,
+                        "tags": {},
+                        "versioning": {
+                            "enabled": false,
+                            "mfaDelete": false
+                        },
+                        "website": null
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "acl": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:route53/zone:Zone::bitflip.space",
+                    "custom": true,
+                    "id": "Z2ANF874KJ45PB",
+                    "type": "aws:route53/zone:Zone",
+                    "inputs": {
+                        "__defaults": [
+                            "forceDestroy"
+                        ],
+                        "comment": "Managed by Pulumi",
+                        "forceDestroy": false,
+                        "name": "bitflip.space"
+                    },
+                    "outputs": {
+                        "comment": "Managed by Pulumi",
+                        "delegationSetId": "",
+                        "forceDestroy": false,
+                        "id": "Z2ANF874KJ45PB",
+                        "name": "bitflip.space.",
+                        "nameServers": [
+                            "ns-1251.awsdns-28.org",
+                            "ns-1570.awsdns-04.co.uk",
+                            "ns-484.awsdns-60.com",
+                            "ns-898.awsdns-48.net"
+                        ],
+                        "tags": {},
+                        "vpcs": [],
+                        "zoneId": "Z2ANF874KJ45PB"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "comment": null,
+                        "name": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role",
+                    "custom": true,
+                    "id": "ca-role-b4ea774",
+                    "type": "aws:iam/role:Role",
+                    "inputs": {
+                        "__defaults": [
+                            "forceDetachPolicies",
+                            "maxSessionDuration",
+                            "name",
+                            "path"
+                        ],
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "description": "CA lambda reads CA cert and writes signed certs to S3",
+                        "forceDetachPolicies": false,
+                        "maxSessionDuration": 3600,
+                        "name": "ca-role-b4ea774",
+                        "path": "/"
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:iam::901680779521:role/ca-role-b4ea774",
+                        "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+                        "createDate": "2019-11-21T03:23:00Z",
+                        "description": "CA lambda reads CA cert and writes signed certs to S3",
+                        "forceDetachPolicies": false,
+                        "id": "ca-role-b4ea774",
+                        "maxSessionDuration": 3600,
+                        "name": "ca-role-b4ea774",
+                        "path": "/",
+                        "tags": {},
+                        "uniqueId": "AROA5D4C42EA5JISNTVQM"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "assumeRolePolicy": null,
+                        "description": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/policy:Policy::instanceCertPolicy",
+                    "custom": true,
+                    "id": "arn:aws:iam::901680779521:policy/instanceCertPolicy-46872c9",
+                    "type": "aws:iam/policy:Policy",
+                    "inputs": {
+                        "__defaults": [
+                            "name",
+                            "path"
+                        ],
+                        "description": "allows instances to access their own CA-signed certs",
+                        "name": "instanceCertPolicy-46872c9",
+                        "path": "/",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::certificate-authority-e005a1d/ca/v1/signed-certs/${aws:userid}/certificate\"}]}"
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:iam::901680779521:policy/instanceCertPolicy-46872c9",
+                        "description": "allows instances to access their own CA-signed certs",
+                        "id": "arn:aws:iam::901680779521:policy/instanceCertPolicy-46872c9",
+                        "name": "instanceCertPolicy-46872c9",
+                        "path": "/",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::certificate-authority-e005a1d/ca/v1/signed-certs/${aws:userid}/certificate\"}]}"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "dependencies": [
+                        "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority"
+                    ],
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "description": null,
+                        "policy": [
+                            "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/rolePolicyAttachment:RolePolicyAttachment::ca-rpa-lambdabasicexecution",
+                    "custom": true,
+                    "id": "ca-role-b4ea774-20191121032300982700000001",
+                    "type": "aws:iam/rolePolicyAttachment:RolePolicyAttachment",
+                    "inputs": {
+                        "__defaults": [],
+                        "policyArn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "outputs": {
+                        "id": "ca-role-b4ea774-20191121032300982700000001",
+                        "policyArn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "dependencies": [
+                        "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                    ],
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "policyArn": null,
+                        "role": [
+                            "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:iam/rolePolicy:RolePolicy::ca-rolepolicy",
+                    "custom": true,
+                    "id": "ca-role-b4ea774:ca-rolepolicy-7eb2766",
+                    "type": "aws:iam/rolePolicy:RolePolicy",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "name": "ca-rolepolicy-7eb2766",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"iam:GetRole\"],\"Resource\":[\"*\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::certificate-authority-e005a1d/ca/v1/ca-key\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:PutObject\"],\"Resource\":[\"arn:aws:s3:::certificate-authority-e005a1d/ca/v1/signed-certs/*\"]}]}",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "outputs": {
+                        "id": "ca-role-b4ea774:ca-rolepolicy-7eb2766",
+                        "name": "ca-rolepolicy-7eb2766",
+                        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"iam:GetRole\"],\"Resource\":[\"*\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::certificate-authority-e005a1d/ca/v1/ca-key\"]},{\"Effect\":\"Allow\",\"Action\":[\"s3:PutObject\"],\"Resource\":[\"arn:aws:s3:::certificate-authority-e005a1d/ca/v1/signed-certs/*\"]}]}",
+                        "role": "ca-role-b4ea774"
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "dependencies": [
+                        "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role",
+                        "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority"
+                    ],
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "policy": [
+                            "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority"
+                        ],
+                        "role": [
+                            "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:infra.prod::infra::aws:lambda/function:Function::caLambda",
+                    "custom": true,
+                    "id": "caLambda-5145177",
+                    "type": "aws:lambda/function:Function",
+                    "inputs": {
+                        "__defaults": [
+                            "memorySize",
+                            "name",
+                            "publish",
+                            "reservedConcurrentExecutions",
+                            "timeout"
+                        ],
+                        "code": {
+                            "4dabf18193072939515e22adb298388d": "0def7320c3a5731c473e5ecbe6d01bc7",
+                            "hash": "4a22e7038943c817b9447d94712c171b520fe2ec21de78609079c6ac029e5785",
+                            "path": "./ca-lambda.zip"
+                        },
+                        "description": "SSH CA using S3 w/ IAM policy to securely deliver certs",
+                        "environment": {
+                            "__defaults": [],
+                            "variables": {
+                                "CA_KEY_URI": "s3://certificate-authority-e005a1d/ca/v1/ca-key",
+                                "OUTPUT_URI_PREFIX": "s3://certificate-authority-e005a1d/ca/v1/signed-certs",
+                                "__defaults": []
+                            }
+                        },
+                        "handler": "ssh-signer",
+                        "memorySize": 128,
+                        "name": "caLambda-5145177",
+                        "publish": false,
+                        "reservedConcurrentExecutions": -1,
+                        "role": "arn:aws:iam::901680779521:role/ca-role-b4ea774",
+                        "runtime": "go1.x",
+                        "timeout": 3
+                    },
+                    "outputs": {
+                        "arn": "arn:aws:lambda:us-west-2:901680779521:function:caLambda-5145177",
+                        "code": {
+                            "4dabf18193072939515e22adb298388d": "0def7320c3a5731c473e5ecbe6d01bc7",
+                            "hash": "4a22e7038943c817b9447d94712c171b520fe2ec21de78609079c6ac029e5785",
+                            "path": "./ca-lambda.zip"
+                        },
+                        "deadLetterConfig": null,
+                        "description": "SSH CA using S3 w/ IAM policy to securely deliver certs",
+                        "environment": {
+                            "variables": {
+                                "CA_KEY_URI": "s3://certificate-authority-e005a1d/ca/v1/ca-key",
+                                "OUTPUT_URI_PREFIX": "s3://certificate-authority-e005a1d/ca/v1/signed-certs"
+                            }
+                        },
+                        "handler": "ssh-signer",
+                        "id": "caLambda-5145177",
+                        "invokeArn": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:901680779521:function:caLambda-5145177/invocations",
+                        "kmsKeyArn": "",
+                        "lastModified": "2019-12-02T00:47:46.332+0000",
+                        "layers": [],
+                        "memorySize": 128,
+                        "name": "caLambda-5145177",
+                        "publish": false,
+                        "qualifiedArn": "arn:aws:lambda:us-west-2:901680779521:function:caLambda-5145177:$LATEST",
+                        "reservedConcurrentExecutions": -1,
+                        "role": "arn:aws:iam::901680779521:role/ca-role-b4ea774",
+                        "runtime": "go1.x",
+                        "sourceCodeHash": "SiLnA4lDyBe5RH2UcSwXG1IP4uwh3nhgkHnGrAKeV4U=",
+                        "sourceCodeSize": 8217095,
+                        "tags": {},
+                        "timeout": 3,
+                        "tracingConfig": {
+                            "mode": "PassThrough"
+                        },
+                        "version": "$LATEST",
+                        "vpcConfig": null
+                    },
+                    "parent": "urn:pulumi:infra.prod::infra::pulumi:pulumi:Stack::infra-infra.prod",
+                    "dependencies": [
+                        "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role",
+                        "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority"
+                    ],
+                    "provider": "urn:pulumi:infra.prod::infra::pulumi:providers:aws::default_1_7_0::522acdae-b962-4f68-a12a-aa8dd1ab5c0e",
+                    "propertyDependencies": {
+                        "code": null,
+                        "description": null,
+                        "environment": [
+                            "urn:pulumi:infra.prod::infra::aws:s3/bucket:Bucket::certificate-authority"
+                        ],
+                        "handler": null,
+                        "role": [
+                            "urn:pulumi:infra.prod::infra::aws:iam/role:Role::ca-role"
+                        ],
+                        "runtime": null
+                    }
+                }
+            ]
+        }
+    }
+}
